@@ -29,45 +29,38 @@ db.connect((err) => {
 });
 
 
-// Ruta de registro
 app.post('/register', (req, res) => {
     const { nombre, apellidos, correo, contrasena, id_rol } = req.body;
-    console.log('Datos recibidos:', { nombre, apellidos, correo, contrasena, id_rol});  // Log para verificar los datos recibidos
+    console.log('Datos recibidos:', { nombre, apellidos, correo, contrasena, id_rol});  
 
-    // Validar si el usuario ya existe
     db.query('SELECT * FROM usuarios WHERE nombre = ?', [nombre], (err, result) => {
         if (err) {
-            console.error('Error al buscar usuario:', err);  // Log del error al buscar usuario
+            console.error('Error al buscar usuario:', err);  
             return res.status(500).send('Error en el servidor al buscar el usuario');
         }
         if (result.length > 0) {
-            console.warn('Usuario ya existe:', nombre);  // Log si el usuario ya existe
+            console.warn('Usuario ya existe:', nombre);  
             return res.status(400).send('El usuario ya existe');
         }
 
-        // Encriptar la contraseña
         const hashedPassword = bcrypt.hashSync(contrasena, 8);
-        console.log('Contraseña encriptada:', hashedPassword);  // Log para verificar la encriptación
+        console.log('Contraseña encriptada:', hashedPassword);  
 
-        // Insertar el nuevo usuario en la base de datos
+        
         db.query('INSERT INTO usuarios (nombre, apellidos, correo, contrasena, id_rol) VALUES (?, ?, ?, ?, ?)', [nombre, apellidos, correo,hashedPassword, id_rol], (err, result) => {
             if (err) {
-                console.error('Error al insertar usuario:', err);  // Log del error al insertar usuario
+                console.error('Error al insertar usuario:', err);  
                 return res.status(500).send('Error en el servidor al insertar el usuario');
             }
-            console.log('Usuario registrado con éxito:', nombre);  // Log de éxito
+            console.log('Usuario registrado con éxito:', nombre);  
             res.status(200).send({ message: 'Usuario registrado con éxito' });
         });
     });
 });
 
-
-
-// Ruta de login
 app.post('/login', (req, res) => {
     const { correo, contrasena } = req.body;
 
-    // Busca al usuario por su correo
     db.query('SELECT * FROM usuarios WHERE correo = ?', [correo], (err, result) => {
         if (err) {
             console.error('Error al buscar usuario en login:', err);
@@ -84,7 +77,7 @@ app.post('/login', (req, res) => {
             return res.status(401).send('Contraseña incorrecta');
         }
 
-        // Genera un token JWT
+        
         const token = jwt.sign({ id: user.id }, 'secret', { expiresIn: '1h' });
         res.status(200).send({ auth: true, token });
     });
