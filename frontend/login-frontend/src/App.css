@@ -1,38 +1,110 @@
 .App {
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* Formulario login */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.formulario-login {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column;
+  max-width: 500px;
+  width: 300px;
+  margin: 20px auto;
+  max-height: 400px;
+  height: 200px;
+  border-radius: 10px;
+  border: 2px solid rgb(52, 41, 92);
+  background-color: rgb(104, 94, 148);
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.formulario-login div {
+  margin: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.formulario-login div label {
+  font-size: 20px;
 }
+
+.formulario-login div input {
+  font-size: 20px;
+  border-radius: 5px;
+  border: 2px solid rgb(52, 41, 92);
+  width: 90%;
+}
+
+.login {
+  padding: 10px 20px;
+  background-color: black;
+  color: wheat;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  margin: 10px 0;
+}
+.login:hover {
+ background-color: rgb(24, 92, 50);
+}
+
+.boton-reg {
+    padding: 10px 20px;
+    background-color: black;
+    color: wheat;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0;
+  }
+
+  .boton-reg:hover {
+   background-color: rgb(112, 61, 119);
+  }
+
+  /* Formulario registro */
+
+  .formulario-register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 600px;
+    width: 300px;
+    margin: 20px auto;
+    border-radius: 10px;
+    border: 2px solid rgb(52, 41, 92);
+    background-color: rgb(104, 94, 148);
+    padding: 20px;
+  }
+
+  .formulario-register div {
+    margin: 5px;
+  }
+  
+  .formulario-register div label {
+    font-size: 20px;
+  }
+  
+  .formulario-register div input {
+    font-size: 20px;
+    border-radius: 5px;
+    border: 2px solid rgb(52, 41, 92);
+    width: 90%;
+  }
+
+  .register {
+    padding: 10px 20px;
+    background-color: rgb(187, 30, 30);
+    color: wheat;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0;
+  }
+
+  .register:hover {
+   background-color: rgb(169, 62, 184);
+  }
